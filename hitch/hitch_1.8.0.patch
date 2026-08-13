@@ -293,7 +293,7 @@ index 1088404..a3c6216 100755
  
  parse_proxy_v2 $BACKENDPORT >proxy.dump &
 diff --git a/src/tests/test39-client-cert-proxy.sh b/src/tests/test39-client-cert-proxy.sh
-index 8e62064..9a391c0 100755
+index 8e62064..570930b 100755
 --- a/src/tests/test39-client-cert-proxy.sh
 +++ b/src/tests/test39-client-cert-proxy.sh
 @@ -33,6 +33,7 @@ s_client -delay=1
@@ -302,6 +302,6 @@ index 8e62064..9a391c0 100755
  cat proxy.dump
 -run_cmd grep "PP2_TYPE_SSL client" proxy.dump | grep -q "0x1"
 +# 0x3 with wolfSSL: its verify callback also runs without a client cert
-+run_cmd grep "PP2_TYPE_SSL client" proxy.dump | grep -qE "0x[13]"
++run_cmd grep "PP2_TYPE_SSL client" proxy.dump | grep -qE "0x[13]$"
  run_cmd grep "PP2_TYPE_SSL verify" proxy.dump | grep -q "0x1"
  ! run_cmd grep "TLV 0xe0" proxy.dump
